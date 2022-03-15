@@ -1,0 +1,20 @@
+{
+    "name": "demul/retro-addict",
+    "description": "autoloader basique pour simplifier la mise en place des REQUIRE",
+    "authors": [
+        {
+            "name": " De Mulder",
+            "email": "demulderjerome@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Router\\": "routes/",
+            "App\\" : "app/",
+            "Database\\" : "database/"
+        }
+    },
+    "require": {
+      "ext-pdo": "*"
+    }
+}
