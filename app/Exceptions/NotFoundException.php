@@ -7,9 +7,9 @@ use Throwable;
 class NotFoundException extends Exception{
     public function __construct($message = "", $code = 0, ?Throwable $previous = null)
     {
+        //va chercher le constructeur parent
         parent::__construct($message, $code, $previous);
     }
-
     public function error404()
     {
         http_response_code(404);

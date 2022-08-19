@@ -1,6 +1,6 @@
-<h1><?= $params['post']->title ?? 'Créer un nouvel article' ?></h1>
+<h1><?= $params['post']->title ?? 'Editer Article' ?></h1>
 
-<form action="<?= isset($params['post']) ? "/admin/posts/edit/{$params['post']->id}" : "/admin/posts/create" ?>" method="POST">
+<form action="<?= isset($params['post']) ? "/RetroAddict/admin/posts/edit/{$params['post']->id}" : "/RetroAddict/admin/posts/create" ?>" method="POST">
     <div class="form-group">
         <label for="title">Titre de l'article</label>
         <input type="text" class="form-control" name="title" id="title" value="<?= $params['post']->title ?? '' ?>">
@@ -25,3 +25,4 @@
     </div>
     <button type="submit" class="btn btn-primary"><?= isset($params['post']) ?'Enregistrer les modifications' : 'Enregistrer mon article' ?></button>
 </form>
+

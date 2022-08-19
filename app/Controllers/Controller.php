@@ -17,6 +17,7 @@ abstract class Controller
         $this->db = $db;
     }
 
+    //Met le path en tampon pendant traitement avant de charger la vue associée dans le content
     protected function view(string $path, array $params = null)
     {
         ob_start();
@@ -26,11 +27,12 @@ abstract class Controller
         require VIEWS . 'layout.php';
     }
 
+    //Récupère la connexion à la base de données
     protected function getDB()
     {
         return $this->db;
     }
-
+    //Vérification user est un administrateur
     protected function isAdmin()
     {
         if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {

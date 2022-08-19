@@ -17,6 +17,7 @@ class PostController extends Controller {
         return $this->view('admin.post.index', compact('posts'));
     }
 
+
     public function create()
     {
         $this->isAdmin();
@@ -37,7 +38,7 @@ class PostController extends Controller {
         $result = $post->create($_POST, $tags);
 
         if ($result) {
-            return header('Location: /admin/posts');
+            return header('Location: /RetroAddict/admin/posts');
         }
     }
 
@@ -62,7 +63,7 @@ class PostController extends Controller {
         $result = $post->update($id, $_POST, $tags);
 
         if ($result) {
-            return header('Location: /admin/posts');
+            return header('Location: /RetroAddict/admin/posts');
         }
     }
 
@@ -74,7 +75,7 @@ class PostController extends Controller {
         $result = $post->destroy($id);
 
         if ($result) {
-            return header('Location: /admin/posts');
+            return header('Location: /RetroAddict/admin/posts');
         }
     }
 }

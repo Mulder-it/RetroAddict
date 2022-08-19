@@ -1,5 +1,10 @@
+#Configuration pour la redirection d'url
+#Active la réécriture
 RewriteEngine On
-
+#Précondition : Si le fichier existe pas de redirection sinon redirection
 RewriteCond %{REQUEST_FILENAME} !-f
-
+#Règle de redirection :
+#Sélectionne toute l'URL avec une écriture régulière
+#On renvoie tout sur public/index.php et on la place en paramère d'url Stocké dans Variable $1
+#Drapeaux : QSA permet d'enchaîner les parmètres s'il y en plusieurs et L pour dire que c'est la dernière url atteinte
 RewriteRule ^(.*)$ public/index.php?url=$1 [QSA,L]

@@ -11,15 +11,12 @@ class BlogController extends Controller {
     {
         return $this->view('blog.welcome');
     }
-    public function achat()
-    {
-        return $this->view('blog.achat');
-    }
+
     public function index()
     {
         $post = new Post($this->getDB());
         $posts = $post->all();
-
+        //compact créee un tableau associatif key = nom de variable, Value = valeur associée
         return $this->view('blog.index', compact('posts'));
     }
 

@@ -5,8 +5,8 @@ namespace App\Controllers;
 use App\models\User;
 use App\Validation\Validator;
 
-class UserController extends Controller
-{
+class UserController extends Controller {
+
     public function login()
     {
         return $this->view('auth.login');
@@ -14,6 +14,7 @@ class UserController extends Controller
 
     public function loginPost()
     {
+
         $validator = new Validator($_POST);
         $errors = $validator->validate([
             'username' => ['required', 'min:3'],
@@ -22,7 +23,7 @@ class UserController extends Controller
 
         if ($errors) {
             $_SESSION['errors'][] = $errors;
-            header('Location: /RetroAddict/login');
+            header('Location: /RetroAddict/views/auth/login');
             exit;
         }
 
@@ -30,9 +31,9 @@ class UserController extends Controller
 
         if (password_verify($_POST['password'], $user->password)) {
             $_SESSION['auth'] = (int) $user->admin;
-            return header('Location: /views/admin/posts?success=true');
+            return header('Location: /RetroAddict/admin/posts?success=true');
         } else {
-            return header('Location: /RetroAddict/login');
+            return header('Location: /RetroAddict/views/auth/login');
         }
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\models;
+namespace App\Models;
 
 use PDO;
 use Database\DBConnection;
@@ -14,18 +14,22 @@ abstract class Model
     {
         $this->db = $db;
     }
+    public function all(): array
+    {
+        return $this->query("SELECT * FROM {$this->table} ORDER BY id ASC ");
+    }
 
- //   public function findById(int $id): Model
- //   {
- //       return $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
-  //  }
+    public function findById(int $id): Model
+    {
+        return $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
+    }
 
     public function create(array $data, ?array $relations = null)
     {
         $firstParenthesis = "";
         $secondParenthesis = "";
         $i = 1;
-
+//Récupère dans le data ; la colonne  et la valeur, cohérence avec les name html
         foreach ($data as $key => $value) {
             $comma = $i === count($data) ? "" : ", ";
             $firstParenthesis .= "{$key}{$comma}";

@@ -1,17 +1,18 @@
 {
-    "name": "demul/retro-addict",
-    "description": "autoloader basique pour simplifier la mise en place des REQUIRE",
+    "name": "user/retro-addict",
+    "description": "Simple autoloader avec composer pour le projet,config des namespaces. autre solution : utilisation de spl_autoload_register",
     "authors": [
         {
-            "name": " De Mulder",
+            "name": "Mulder",
             "email": "demulderjerome@gmail.com"
         }
+
     ],
     "autoload": {
         "psr-4": {
-            "Router\\": "routes/",
-            "App\\" : "app/",
-            "Database\\" : "database/"
+            "Router\\" : "routes/",
+            "App\\": "app/",
+            "Database\\": "database/"
         }
     },
     "require": {
