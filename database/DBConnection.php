@@ -23,6 +23,7 @@ class DBConnection
 
     public function getPDO(): PDO
     {
+
         //ternaire, ?? = opérateur Null coalescent : il renvoit la première opérande si elle existe sinon l'autre.
         return $this->pdo ?? $this->pdo = new PDO("mysql:dbname={$this->dbname};host={$this->host}", $this->username, $this->password, [
                 //Mode report d'erreur lance des excéptions

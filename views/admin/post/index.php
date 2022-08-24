@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <h1>Panel d'Administration</h1>
 
 <?php if(isset($_GET['success'])): ?>
@@ -22,7 +23,7 @@
             <td><?= $post->title ?></td>
             <td><?= $post->getCreatedAt() ?></td>
             <td>
-                <a href="/RetroAddict/admin/posts/edit/<?= $post->id ?>" class="btn btn-warning">Modifier</a>
+                <a href="/RetroAddict/admin/posts/edit/<?= $post->id ?>" class="btn btn-warning" methods="POST">Modifier</a>
                 <form action="/RetroAddict/admin/posts/delete/<?= $post->id ?>" method="POST" class="d-inline">
                     <button type="submit" class="btn btn-danger">Supprimer</button>
                 </form>

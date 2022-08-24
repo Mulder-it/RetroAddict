@@ -1,2 +1,2 @@
-<h1 align="center">Erreur 404 - La page demandée est introuvable :(</h1>
-<img src="/RetroAddict/images/404-error.jpg" alt="404">
+
+<img  style="height: 80% ; position: absolute; align-content: center" src="/RetroAddict/images/Error404.png" alt="404">

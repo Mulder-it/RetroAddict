@@ -3,14 +3,15 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
+use App\Models\Model;
 use App\Models\Post;
 use App\Models\Tag;
 
-class PostController extends Controller {
+class   PostController extends Controller {
 
     public function index()
     {
-        $this->isAdmin();
+        $this->isLogged();
 
         $posts = (new Post($this->getDB()))->all();
 

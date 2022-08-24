@@ -1,50 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro Addict</title>
-    <link rel="stylesheet" href="<?= SCRIPTS . 'css' . DIRECTORY_SEPARATOR . 'app.css' ?>">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Retro Addict</title>
+        <link rel="stylesheet" href="<?= SCRIPTS . 'css' . DIRECTORY_SEPARATOR . 'style.css' ?>">
+    </head>
 
-<body>
-<div class="bg"></div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/RetroAddict/">Accueil</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <body>
+        <header><img src="/RetroAddict/images/header2mini.png" alt="logo"></header>
+        <nav>
+            <ul>
+                <li><a href="/RetroAddict/">Accueil</a></li>
+                <li><a href="/RetroAddict/posts/">Articles</a></li>
+                <?php if (isset($_SESSION['auth']) && $_SESSION['auth'] ===1 ){?>
+                    <li><a href="/RetroAddict/admin/posts/">Gestion articles</a></li>
+                    <li><a href="/RetroAddict/users">Gestion utilisateurs</a></li>
+                    <li><a href="/RetroAddict/logout/">Se déconnecter</a></li>
+                <?php }elseif( isset($_SESSION['auth']) && $_SESSION['auth'] != 1){ ?><li>
+                    <li><a href="/RetroAddict/admin/posts/">Gestion articles</a></li>
+                    <li><a href="/RetroAddict/users/profil/<?= $_SESSION['id'] ?>">Profil</a></li>
+                    <li><a href="/RetroAddict/logout/">Se déconnecter</a></li>
+                <?php } else { ?>
+                    <li><a href="/RetroAddict/login/">login</a></li>
+                <?php } ?>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/RetroAddict/posts/">News</a>
-            </li>
-            <?php if (isset($_SESSION['auth'])){?>
-            <li class="nav-item">
-                <a class="nav-link" href="/RetroAddict/admin/posts/">Administration</a>
-           <?php }else{ ?><li class="nav-item">
-                <a class="nav-link" href="/RetroAddict/login/">login</a>
-            </li>
-            <?php } ?>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <?php if (isset($_SESSION['auth'])): ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="/RetroAddict/logout/">Se déconnecter</a>
-                </li>
-            <?php endif ?>
-        </ul>
+
+
+        </nav>
+    <div class="container">
+        <?= $content ?>
     </div>
-</nav>
-
-<div class="bg-image" style="background-image: url('../images/Background1.jpg')"></div>
-<div class="container">
-    <?= $content ?>
-</div>
-
-
-</body>
-
+    </body>
 </html>

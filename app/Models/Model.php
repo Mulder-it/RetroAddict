@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use mysql_xdevapi\Exception;
 use PDO;
 use Database\DBConnection;
 
@@ -24,8 +25,10 @@ abstract class Model
         return $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
     }
 
+
     public function create(array $data, ?array $relations = null)
     {
+
         $firstParenthesis = "";
         $secondParenthesis = "";
         $i = 1;
@@ -37,12 +40,15 @@ abstract class Model
             $i++;
         }
 
+
+
         return $this->query("INSERT INTO {$this->table} ($firstParenthesis)
-        VALUES($secondParenthesis)", $data);
+        VALUES ($secondParenthesis)", $data);
     }
 
     public function update(int $id, array $data, ?array $relations = null)
     {
+
         $sqlRequestPart = "";
         $i = 1;
 
@@ -59,7 +65,9 @@ abstract class Model
 
     public function destroy(int $id): bool
     {
-        return $this->query("DELETE FROM {$this->table} WHERE id = ?", [$id]);
+
+            return $this->prepare("DELETE FROM {$this->table} WHERE id = ?", [$id], true);
+
     }
 
     public function query(string $sql, array $param = null, bool $single = null)
@@ -83,7 +91,35 @@ abstract class Model
 
         if ($method === 'query') {
             return $stmt->$fetch();
-        } else {
+        }
+        else {
+            $stmt->execute($param);
+            return $stmt->$fetch();
+        }
+    }
+    public function prepare(string $sql, array $param = null, bool $single = null)
+    {
+        $method = is_null($param) ? 'query' : 'prepare';
+
+        if (
+            strpos($sql, 'DELETE') === 0
+            || strpos($sql, 'UPDATE') === 0
+            || strpos($sql, 'INSERT') === 0) {
+
+            $stmt = $this->db->getPDO()->$method($sql);
+            $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
+            return $stmt->execute($param);
+        }
+
+        $fetch = is_null($single) ? 'fetchAll' : 'fetch';
+
+        $stmt = $this->db->getPDO()->$method($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
+
+        if ($method === 'prepare') {
+            return $stmt->$fetch();
+        }
+        else {
             $stmt->execute($param);
             return $stmt->$fetch();
         }

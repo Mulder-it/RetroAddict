@@ -1,5 +1,6 @@
-<h1><?= $params['post']->title ?? 'Editer Article' ?></h1>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<h1><?= $params['post']->title ?? 'Editer Article' ?></h1>
 <form action="<?= isset($params['post']) ? "/RetroAddict/admin/posts/edit/{$params['post']->id}" : "/RetroAddict/admin/posts/create" ?>" method="POST">
     <div class="form-group">
         <label for="title">Titre de l'article</label>
@@ -11,7 +12,7 @@
     </div>
     <div class="form-group">
         <label for="tags">Tags de l'article</label>
-        <select multiple class="form-control" id="tags" name="tags[]">
+        <select required multiple class="form-control" id="tags" name="tags[]">
             <?php foreach ($params['tags'] as $tag) : ?>
                 <option value="<?= $tag->id ?>"
                     <?php if (isset($params['post'])) : ?>
@@ -25,4 +26,3 @@
     </div>
     <button type="submit" class="btn btn-primary"><?= isset($params['post']) ?'Enregistrer les modifications' : 'Enregistrer mon article' ?></button>
 </form>
-

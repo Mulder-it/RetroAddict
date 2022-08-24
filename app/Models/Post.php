@@ -8,6 +8,7 @@ class Post extends Model {
 
     protected $table = 'posts';
 
+
     public function getCreatedAt(): string
     {
         return (new DateTime($this->created_at))->format('d/m/Y à H:i');

@@ -41,5 +41,16 @@ abstract class Controller
             return header('Location: /RetroAddict/login');
         }
     }
+    //Vérification user est connecté
+    public function isLogged()
+    {
+        if (isset($_SESSION['auth'])) {
+            return true;
+        } else {
+            return header('Location: /RetroAddict/login');
+        }
+    }
+
+
 
 }

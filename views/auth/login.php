@@ -1,4 +1,7 @@
 <!-- Tableau d'erreurs Si pas de données entrées -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+
 <?php if (isset($_SESSION['errors'])): ?>
 
     <?php foreach($_SESSION['errors'] as $errorsArray): ?>
@@ -13,19 +16,39 @@
 
 <?php endif ?>
 
-<?php session_destroy(); ?>
-
-<h1>Se connecter</h1>
-
-<form action="/RetroAddict/login" method="POST">
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" name="username" id="username">
+<div class="containerlog">
+    <div class="row">
+    <div class="col-md-6"></div>
+        <h2>Se connecter</h2>
+        <form action="/RetroAddict/login" method="POST">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" name="email" class="form-control" required id="email">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" required id="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <div><form action="/RetroAddict/register">
+                <button type="submit" class="btn btn-secondary">S'enregistrer</button>
+            </form></div>
     </div>
-    <div class="form-group">
+<!--
+</div>
+<form action="/RetroAddict/login" method="POST">
+    <div>
+        <label for="email">Login</label>
+        <input type="text"  name="email" id="email">
+    </div>
+    <div>
         <label for="password">Password</label>
         <input type="password" class="form-control" name="password" id="password">
     </div>
-    <button type="submit" class="btn btn-primary">Se connecter</button>
-    <button type="submit" class="btn btn-primary">S'enregistrer</button>
+    <button type="submit">Se connecter</button>
 </form>
+<form action="/RetroAddict/register">
+    <button type="submit">S'enregistrer</button>
+</form>
+-->

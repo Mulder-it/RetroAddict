@@ -10,6 +10,7 @@ class NotFoundException extends Exception{
         //va chercher le constructeur parent
         parent::__construct($message, $code, $previous);
     }
+    //Redirige vers la page d'erreur 404 quand une page n'est pas trouvée
     public function error404()
     {
         http_response_code(404);

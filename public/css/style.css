@@ -1,0 +1,91 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #ffffff;
+}
+
+header {
+    padding: 10px 100px;
+    box-sizing: border-box;
+}
+nav {
+    width: 100%;
+    height: 50px;
+    background : rgba(0,0,0,.8);
+    border-top: 1px solid rgba(255,255,255,.2);
+    border-top: 1px solid rgba(255,255,255,.2);
+    position: sticky;
+    top: 0;
+    box-sizing: border-box;
+    z-index: 1005;
+}
+nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0 100px;
+    float: right;
+}
+nav ul li {
+    list-style : none;
+}
+nav ul li a {
+    display: block;
+    color: #fff;
+    padding: 0 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 50px;
+}
+nav ul li a:hover,
+nav ul li a.active {
+    background: #166ede;
+}
+
+.container {
+    margin-top: 10px;
+    padding: 0;
+    box-sizing: content-box;
+    height: auto;
+    color: #000000;
+}
+.container h2 {
+    font-size: 3em;
+    margin: 50px;
+    padding: 0 0 20px;
+    color: #000000;
+}
+.container p {
+    font-size: 1.2em;
+    margin: 50px;
+    padding: 0;
+    color: #000000;
+}
+
+
+#myfooter {
+    text-align: center;
+    background : rgba(0,0,0,.8);
+    color: black;
+    position: page;
+    bottom:0;
+    width:100%;
+    padding-top:50px;
+    height:50px;
+}
+
+.banniere
+{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.imgcontainer{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+   position: page;
+
+}
